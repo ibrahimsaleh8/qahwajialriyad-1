@@ -93,7 +93,11 @@ export function Header() {
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => {
+                    setTimeout(() => {
+                      setIsMobileMenuOpen(false);
+                    }, 600);
+                  }}
                   className="text-[hsl(var(--foreground)/0.8)] hover:text-[hsl(var(--primary))] transition-colors font-medium text-lg py-2">
                   {link.label}
                 </a>
