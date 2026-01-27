@@ -1,4 +1,15 @@
 -- CreateTable
+CREATE TABLE "Admin" (
+    "id" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "password" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Admin_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "projects" (
     "id" TEXT NOT NULL,
     "projectId" TEXT NOT NULL,
@@ -138,6 +149,9 @@ CREATE TABLE "gallery_images" (
 
     CONSTRAINT "gallery_images_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Admin_email_key" ON "Admin"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "projects_projectId_key" ON "projects"("projectId");
