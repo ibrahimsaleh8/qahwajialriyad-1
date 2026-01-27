@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { HeaderData } from "@/lib/responseType";
 
 const navLinks = [
   { href: "#home", label: "الرئيسية" },
@@ -13,7 +14,10 @@ const navLinks = [
   { href: "#contact", label: "تواصل معنا" },
 ];
 
-export function Header() {
+export function Header({
+  brandName,
+  telephone,
+}: HeaderData & { telephone?: string }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -22,12 +26,12 @@ export function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
+  console.log(brandName.split(" ").length > 0);
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-[hsl(var(--background)/0.95)] backdrop-blur-md shadow text-[hsl(var(--foreground)/0.8)]"
+          ? "bg-white backdrop-blur-md shadow text-[hsl(var(--foreground)/0.8)]"
           : "bg-transparent text-white/70"
       }`}>
       <div className="container mx-auto px-4">
@@ -36,12 +40,18 @@ export function Header() {
           <a
             href="#home"
             className="flex items-center gap-3 text-2xl font-bold">
-            <span
-              className={
-                isScrolled ? "text-[hsl(var(--foreground))]" : "text-white/80"
-              }>
-              قهوجيين <span className="text-[hsl(var(--primary))]">الرياض</span>
-            </span>
+            {brandName.split(" ").length == 2 ? (
+              <span className={isScrolled ? "text-black" : "text-white/80"}>
+                {brandName.split(" ")[0]}{" "}
+                <span className="text-main-color">
+                  {brandName.split(" ")[1]}
+                </span>
+              </span>
+            ) : (
+              <span className={isScrolled ? "text-black" : "text-white/80"}>
+                {brandName}
+              </span>
+            )}
           </a>
 
           {/* Desktop Navigation */}
@@ -60,8 +70,8 @@ export function Header() {
           <div className="hidden lg:flex items-center gap-4">
             <a
               target="_blank"
-              href="tel:+966506451744"
-              className="bg-[hsl(var(--primary))] hover:bg-[hsl(var(--primary)/0.9)] text-[hsl(var(--primary-foreground))] px-6 py-3 rounded-lg shadow-[0_4px_20px_hsl(var(--shadow-gold))] transition-all">
+              href={`tel:${telephone}`}
+              className="bg-main-color hover:opacity-75 text-white px-6 py-3 rounded-lg shadow-[0_4px_20px_hsl(var(--shadow-gold))] transition-all">
               احجز الآن
             </a>
           </div>
@@ -69,7 +79,7 @@ export function Header() {
           {/* Mobile Menu Toggle */}
           <button
             aria-label="toggle mobile menu"
-            className="lg:hidden text-[hsl(var(--foreground))] p-2"
+            className="lg:hidden text-[hsl(var(--foreground))] cursor-pointer p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
             {isMobileMenuOpen ? (
               <X className="w-6 h-6" />
@@ -87,7 +97,7 @@ export function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-[hsl(var(--background))] border-t border-[hsl(var(--border))]">
+            className="lg:hidden bg-[#F8F6F1] text-black border-t border-[hsl(var(--border))]">
             <nav className="container mx-auto px-6 py-6 flex flex-col gap-4">
               {navLinks.map((link) => (
                 <a
@@ -104,8 +114,8 @@ export function Header() {
               ))}
               <a
                 target="_blank"
-                href="tel:+966506451744"
-                className="bg-[hsl(var(--primary))] hover:bg-[hsl(var(--primary)/0.9)] text-[hsl(var(--primary-foreground))] mt-4 w-full py-3 rounded-lg shadow-[0_4px_20px_hsl(var(--shadow-gold))] text-center">
+                href={`tel:${telephone}`}
+                className="bg-main-color hover:opacity-80 text-white mt-4 w-full py-3 rounded-lg shadow-[0_4px_20px_hsl(var(--shadow-gold))] text-center">
                 احجز الآن
               </a>
             </nav>

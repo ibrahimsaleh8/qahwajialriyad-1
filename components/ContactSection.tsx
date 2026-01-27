@@ -1,6 +1,12 @@
+import { FooterData } from "@/lib/responseType";
 import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 
-export function ContactSection() {
+export function ContactSection({
+  address,
+  phone,
+  email,
+  whatsapp,
+}: FooterData & { whatsapp: string }) {
   return (
     <section id="contact" className="py-24 bg-background">
       <div className="container mx-auto px-4">
@@ -36,9 +42,9 @@ export function ContactSection() {
                     <p className="text-muted-foreground text-sm">اتصل بنا</p>
                     <a
                       target="_blank"
-                      href="tel:+966506451744"
+                      href={`tel:${phone}`}
                       className="text-foreground font-semibold text-lg hover:text-primary transition-colors">
-                      966506451744+
+                      {phone}
                     </a>
                   </div>
                 </div>
@@ -52,30 +58,32 @@ export function ContactSection() {
                     <p className="text-muted-foreground text-sm">واتساب</p>
                     <a
                       target="_blank"
-                      href="https://wa.me/966506451744"
+                      href={`https://wa.me/${whatsapp.includes("+") ? whatsapp.split("+").join("") : whatsapp}?text=`}
                       className="text-foreground font-semibold text-lg hover:text-primary transition-colors">
-                      966506451744+
+                      {whatsapp}
                     </a>
                   </div>
                 </div>
 
                 {/* Email */}
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-xl bg-[#E9DECC] flex items-center justify-center shrink-0">
-                    <Mail className="w-6 h-6 text-[#D2962D]" />
+                {email && (
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 rounded-xl bg-[#E9DECC] flex items-center justify-center shrink-0">
+                      <Mail className="w-6 h-6 text-[#D2962D]" />
+                    </div>
+                    <div>
+                      <p className="text-muted-foreground text-sm">
+                        البريد الإلكتروني
+                      </p>
+                      <a
+                        target="_blank"
+                        href={`mailto:${email}`}
+                        className="text-foreground font-semibold text-lg hover:text-primary transition-colors">
+                        {email}
+                      </a>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-muted-foreground text-sm">
-                      البريد الإلكتروني
-                    </p>
-                    <a
-                      target="_blank"
-                      href="mailto:info@qahwajialriyad.com"
-                      className="text-foreground font-semibold text-lg hover:text-primary transition-colors">
-                      info@qahwajialriyad.com
-                    </a>
-                  </div>
-                </div>
+                )}
 
                 {/* Location */}
                 <div className="flex items-center gap-4">
@@ -85,16 +93,15 @@ export function ContactSection() {
                   <div>
                     <p className="text-muted-foreground text-sm">الموقع</p>
                     <p className="text-foreground font-semibold text-lg">
-                      الرياض، المملكة العربية السعودية
+                      {address}
                     </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Quick WhatsApp CTA */}
             <a
-              href="https://wa.me/966506451744"
+              href={`https://wa.me/${whatsapp.includes("+") ? whatsapp.split("+").join("") : whatsapp}?text=`}
               target="_blank"
               className="flex items-center justify-center gap-3 text-white w-fit min-w-60 bg-[#25D366] text-cream rounded-xl p-4 font-semibold text-lg hover:bg-[#20BD5A] transition-colors shadow-lg">
               <MessageCircle className="w-6 h-6" />

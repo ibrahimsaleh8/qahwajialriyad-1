@@ -1,63 +1,60 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import { Cairo } from "next/font/google";
 import "./globals.css";
+import { CurrentProjectId } from "@/lib/ProjectId";
+import { getProjectContent } from "@/server-actions/main-data";
 
 const cairoFont = Cairo({
   weight: ["1000", "200", "300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["arabic"],
 });
 
-export const metadata: Metadata = {
-  title: "قهوجيين الرياض - ضيافة عربية فاخرة في الرياض",
-  description:
-    "قهوجيين الرياض تقدم خدمات الضيافة والقهوة العربية الفاخرة لجميع المناسبات الخاصة والرسمية في الرياض.",
-  keywords: [
-    "قهوجي الرياض",
-    "قهوجيين وصابين الرياض",
-    "قهوجي وصبابين الرياض",
-    "قهوجي وصباب الرياض",
-    "قهوجي وصباب",
-    "قهوجين",
-    "قهوجيين وصبابين الرياض",
-    "قهوجي",
-    "قهوجين وصبابين بالرياض",
-    "قهوجيين وصبابين بالرياض",
-    "قهوجي في الرياض",
-    "صبابين قهوة الرياض",
-    "مباشرين قهوة",
-    "قهوجيين بالرياض",
-    "قهوجي وصبابين بالرياض",
-    "قهوجي وصبابين",
-    "قهوجي وصبابين قهوة بالرياض",
-    "قهوجي صبابين الرياض",
-    "مباشرين قهوة الرياض",
-    "قهوجيين الرياض",
-    "صبابين",
-    "صبابين قهوة",
-    "قهوجي بالرياض",
-  ],
-  creator: "قهوجيين الرياض",
-  publisher: "قهوجيين الرياض",
-  openGraph: {
-    title: "قهوجيين الرياض - ضيافة عربية فاخرة في الرياض",
-    description:
-      "قهوجيين الرياض تقدم خدمات الضيافة والقهوة العربية الفاخرة لجميع المناسبات الخاصة والرسمية في الرياض.",
-    type: "website",
-    locale: "ar_SA",
-    siteName: "قهوجيين الرياض",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "قهوجيين الرياض - ضيافة عربية فاخرة في الرياض",
-    description:
-      "قهوجيين الرياض تقدم خدمات الضيافة والقهوة العربية الفاخرة لجميع المناسبات الخاصة والرسمية في الرياض.",
-  },
-};
+export const dynamic = "force-dynamic";
+
+export async function generateMetadata(): Promise<Metadata> {
+  try {
+    const data = await getProjectContent(CurrentProjectId);
+
+    const title =
+      data.hero?.headline || data.header.brandName || "قهوجيين الرياض";
+    const description =
+      data.hero?.subheadline || "خدمات الضيافة العربية في الرياض";
+    const brandName = data.header.brandName;
+
+    return {
+      title,
+      description,
+      keywords: data.footer?.brandName ? [data.footer.brandName] : [],
+      creator: brandName,
+      publisher: brandName,
+      openGraph: {
+        title,
+        description,
+        type: "website",
+        locale: "ar_SA",
+        siteName: brandName,
+      },
+      twitter: {
+        card: "summary_large_image",
+        title,
+        description,
+      },
+    };
+  } catch (error) {
+    console.error("Metadata fetch failed:", error);
+    return {
+      title: "قهوجيين الرياض",
+      description: "خدمات الضيافة العربية في الرياض",
+    };
+  }
+}
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="ar" dir="rtl">
       <body className={`${cairoFont.className} antialiased`}>{children}</body>

@@ -1,7 +1,13 @@
+import { HeroSectionData } from "@/lib/responseType";
 import heroImage from "@images/hero-coffee.webp";
 import Image from "next/image";
 
-export function HeroSection() {
+export function HeroSection({
+  headline,
+  subheadline,
+  whatsApp,
+}: HeroSectionData) {
+  console.log(whatsApp);
   return (
     <section
       id="home"
@@ -23,29 +29,25 @@ export function HeroSection() {
         <div className="max-w-4xl mx-auto">
           {/* Headline */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[hsl(var(--cream))] mb-6 leading-tight">
-            ضيافة عربية{" "}
-            <span className="text-[hsl(var(--primary))]">أصيلة</span>
-            <br />
-            بلمسة فاخرة
+            {headline}
           </h1>
 
           {/* Subheadline */}
           <p className="text-lg md:text-xl text-[hsl(var(--cream)/0.8)] mb-10 max-w-2xl mx-auto leading-relaxed">
-            نقدم خدمات القهوة العربية والضيافة الراقية لمناسباتكم الخاصة
-            والرسمية في الرياض، بأعلى معايير الجودة والأصالة السعودية
+            {subheadline}{" "}
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <a
               target="_blank"
-              href="tel:+966506451744"
-              className="bg-[hsl(var(--primary))] hover:bg-[hsl(var(--primary)/0.9)] text-[hsl(var(--primary-foreground))] text-lg px-8 py-4 rounded-lg shadow-[0_4px_20px_hsl(var(--shadow-gold))] transition-all">
+              href={`https://wa.me/${whatsApp?.includes("+") ? whatsApp.split("+").join("") : whatsApp}?text=`}
+              className="bg-main-color hover:opacity-85 text-white text-lg px-8 py-4 rounded-lg shadow-[0_4px_20px_hsl(var(--shadow-gold))] transition-all">
               احجز خدمتك الآن
             </a>
             <a
               href="#services"
-              className="border border-[hsl(var(--cream)/0.3)] bg-[hsl(var(--cream)/1)] text-black/60 hover:bg-[hsl(var(--cream)/0.1)] hover:text-white text-lg px-8 py-4 rounded-lg transition-all">
+              className="border border-[hsl(var(--cream)/0.3)] bg-[hsl(var(--cream)/1)] text-black/60 hover:bg-[hsl(var(--cream)/0.1)] hover:text-white text-lg px-8 py-4 rounded-lg transition-all duration-500">
               تعرف على خدماتنا
             </a>
           </div>
