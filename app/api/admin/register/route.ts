@@ -7,11 +7,25 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const email = (body?.email as string | undefined)?.trim().toLowerCase();
     const password = body?.password as string | undefined;
+    const Secretpassword = body?.secretpassword as string | undefined;
 
     if (!email || !password) {
       return NextResponse.json(
         { error: "email and password are required" },
-        { status: 400 }
+        { status: 400 },
+      );
+    }
+
+    if (!Secretpassword) {
+      return NextResponse.json(
+        { error: "secret passwor is required" },
+        { status: 400 },
+      );
+    }
+    if (Secretpassword != process.env.NEXT_PUBLIC_SECRET_PASSWORD) {
+      return NextResponse.json(
+        { error: "Invalid secret password" },
+        { status: 400 },
       );
     }
 
@@ -19,7 +33,7 @@ export async function POST(request: NextRequest) {
     if (exists) {
       return NextResponse.json(
         { error: "Admin already exists" },
-        { status: 409 }
+        { status: 409 },
       );
     }
 
@@ -38,8 +52,7 @@ export async function POST(request: NextRequest) {
         error: "Failed to register admin",
         message: error instanceof Error ? error.message : "Unknown error",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
-

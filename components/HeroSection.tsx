@@ -7,7 +7,6 @@ export function HeroSection({
   subheadline,
   whatsApp,
 }: HeroSectionData) {
-  console.log(whatsApp);
   return (
     <section
       id="home"
