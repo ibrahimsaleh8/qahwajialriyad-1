@@ -54,6 +54,9 @@ export async function generateMetadata(): Promise<Metadata> {
       alternates: {
         canonical: process.env.NEXT_PUBLIC_APP_URL,
       },
+      verification: {
+        google: "5Duix7k5t4yRT2Hom81bfuH1ACJ9cjPu5KHNQmfJHV8",
+      },
     };
   } catch (error) {
     console.error("Metadata fetch failed:", error);
