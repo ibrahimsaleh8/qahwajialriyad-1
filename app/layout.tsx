@@ -6,6 +6,7 @@ import { CurrentProjectId } from "@/lib/ProjectId";
 import { getProjectMetadata } from "@/server-actions/metatags";
 import { StructuredData } from "@/components/StructuredData";
 import { Analytics } from "@vercel/analytics/next";
+import Script from "next/script";
 
 const cairoFont = Cairo({
   weight: ["1000", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -89,6 +90,22 @@ export default async function RootLayout({
         {children}
 
         <Analytics />
+        <Script
+          id="Clixtell-tracking"
+          type="text/javascript"
+          strategy="afterInteractive">
+          {`
+            var script=document.createElement('script');
+           
+         var prefix=document.location.protocol;
+          script.async=true;script.type='text/javascript'; var target=prefix +
+          '//scripts.clixtell.com/track.js'; script.src=target;var
+          elem=document.head; elem.appendChild(script);
+`}
+        </Script>
+        <noscript>
+          <img src="https://tracker.clixtell.com/track/t.gif" alt="" />
+        </noscript>
       </body>
     </html>
   );
