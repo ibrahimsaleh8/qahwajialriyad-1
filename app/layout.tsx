@@ -91,20 +91,18 @@ export default async function RootLayout({
 
         <Analytics />
         <Script
-          id="Clixtell-tracking"
-          type="text/javascript"
-          strategy="afterInteractive">
-          {`
-            var script=document.createElement('script');
-           
-         var prefix=document.location.protocol;
-          script.async=true;script.type='text/javascript'; var target=prefix +
-          '//scripts.clixtell.com/track.js'; script.src=target;var
-          elem=document.head; elem.appendChild(script);
-`}
-        </Script>
+          id="clixtell-tracking"
+          src="https://scripts.clixtell.com/track.js"
+          strategy="afterInteractive"
+        />
+
+        {/* Fallback for users with JS disabled */}
         <noscript>
-          <img src="https://tracker.clixtell.com/track/t.gif" alt="" />
+          <img
+            src="https://tracker.clixtell.com/track/t.gif"
+            alt=""
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </noscript>
       </body>
     </html>
