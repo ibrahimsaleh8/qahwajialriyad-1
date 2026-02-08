@@ -11,8 +11,6 @@ import { CurrentProjectId } from "@/lib/ProjectId";
 import { ProjectContentResponse } from "@/lib/responseType";
 import { getProjectContent } from "@/server-actions/main-data";
 
-export const dynamic = "force-dynamic"; // force fresh data every request
-
 export default async function HomePage() {
   let data;
 

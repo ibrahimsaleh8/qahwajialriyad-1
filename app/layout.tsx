@@ -13,8 +13,6 @@ const cairoFont = Cairo({
   subsets: ["arabic"],
 });
 
-export const dynamic = "force-dynamic";
-
 export async function generateMetadata(): Promise<Metadata> {
   try {
     const data = await getProjectMetadata(CurrentProjectId);
