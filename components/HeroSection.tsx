@@ -1,5 +1,5 @@
 import { HeroSectionData } from "@/lib/responseType";
-import heroImage from "@images/hero-coffee.webp";
+import heroImage from "@images/hero-image.webp";
 import Image from "next/image";
 
 export function HeroSection({
