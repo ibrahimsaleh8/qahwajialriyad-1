@@ -55,9 +55,9 @@ html {
   --sidebar-ring: oklch(0.708 0 0);
 
   /* Colors */
-  --main-color: #c9902e;
+  --main-color: #825301;
   --main-bg: #f8f6f1;
-  --low-color: #847062;
+  --low-color: #3d342d;
   --second-bg: #ece7df;
 }
 

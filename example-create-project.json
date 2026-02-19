@@ -45,14 +45,14 @@
     "primaryCtaLink": "tel:+966506451744",
     "secondaryCtaText": "تعرف على خدماتنا",
     "secondaryCtaLink": "#services",
-    "backgroundImage": "https://res.cloudinary.com/dg8bbwiu5/image/upload/v1769771036/uploads/zqyn9qutikvkpgspkvni.jpg",
+    "backgroundImage": "/",
     "isActive": true
   },
   "aboutSection": {
     "label": "من نحن",
     "title": "إرث عريق في الضيافة السعودية",
     "description1": "نحن في قهوجيين الرياض نؤمن بأن القهوة العربية ليست مجرد مشروب، بل هي رمز للكرم والأصالة السعودية العريقة. نقدم خدمات الضيافة الفاخرة بأيدي فريق محترف يجسد قيم الضيافة العربية الأصيلة.",
-    "image": "https://res.cloudinary.com/dg8bbwiu5/image/upload/v1769780921/uploads/wmfl5spoxwvcb7clxxmm.jpg"
+    "image": "https://res.cloudinary.com/dg8bbwiu5/image/upload/v1771349837/uploads/erq81njavvu5qrfqqoap.jpg"
   },
   "servicesSection": {
     "label": "خدماتنا",

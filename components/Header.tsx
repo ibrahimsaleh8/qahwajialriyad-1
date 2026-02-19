@@ -31,7 +31,7 @@ export function Header({
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? "bg-white backdrop-blur-md shadow text-[hsl(var(--foreground)/0.8)]"
-          : "bg-transparent text-white/70"
+          : "bg-transparent text-white"
       }`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
@@ -39,18 +39,7 @@ export function Header({
           <a
             href="#home"
             className="flex items-center gap-3 text-2xl font-bold">
-            {brandName.split(" ").length == 2 ? (
-              <span className={isScrolled ? "text-black" : "text-white/80"}>
-                {brandName.split(" ")[0]}{" "}
-                <span className="text-main-color">
-                  {brandName.split(" ")[1]}
-                </span>
-              </span>
-            ) : (
-              <span className={isScrolled ? "text-black" : "text-white/80"}>
-                {brandName}
-              </span>
-            )}
+            {brandName}
           </a>
 
           {/* Desktop Navigation */}

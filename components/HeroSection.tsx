@@ -41,12 +41,12 @@ export function HeroSection({
             <a
               target="_blank"
               href={`https://wa.me/${whatsApp?.includes("+") ? whatsApp.split("+").join("") : whatsApp}?text=`}
-              className="bg-main-color hover:opacity-85 text-white text-lg px-8 py-4 rounded-lg shadow-[0_4px_20px_hsl(var(--shadow-gold))] transition-all">
+              className="bg-main-color hover:opacity-85 text-white font-medium text-lg px-8 py-4 rounded-lg shadow-[0_4px_20px_hsl(var(--shadow-gold))] transition-all">
               احجز خدمتك الآن
             </a>
             <a
               href="#services"
-              className="border border-[hsl(var(--cream)/0.3)] bg-[hsl(var(--cream)/1)] text-black/60 hover:bg-[hsl(var(--cream)/0.1)] hover:text-white text-lg px-8 py-4 rounded-lg transition-all duration-500">
+              className="border border-[hsl(var(--cream)/0.3)] font-medium bg-[hsl(var(--cream)/1)] text-black/60 hover:bg-[hsl(var(--cream)/0.1)] hover:text-white text-lg px-8 py-4 rounded-lg transition-all duration-500">
               تعرف على خدماتنا
             </a>
           </div>

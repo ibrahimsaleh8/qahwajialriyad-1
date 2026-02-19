@@ -19,7 +19,7 @@ export function ContactSection({
             احجز خدمتك <span className="text-[#D2962D]">الآن</span>
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto mb-6" />
-          <p className="text-muted-foreground text-lg">
+          <p className="text-low-color text-lg">
             تواصل معنا لحجز خدمات الضيافة لمناسبتك القادمة
           </p>
         </div>
@@ -39,7 +39,7 @@ export function ContactSection({
                     <Phone className="w-6 h-6 text-[#D2962D]" />
                   </div>
                   <div>
-                    <p className="text-muted-foreground text-sm">اتصل بنا</p>
+                    <p className="text-low-color text-sm">اتصل بنا</p>
                     <a
                       target="_blank"
                       href={`tel:${phone}`}
@@ -55,7 +55,7 @@ export function ContactSection({
                     <MessageCircle className="w-6 h-6 text-[#D2962D]" />
                   </div>
                   <div>
-                    <p className="text-muted-foreground text-sm">واتساب</p>
+                    <p className="text-low-color text-sm">واتساب</p>
                     <a
                       target="_blank"
                       href={`https://wa.me/${whatsapp.includes("+") ? whatsapp.split("+").join("") : whatsapp}?text=`}
@@ -72,7 +72,7 @@ export function ContactSection({
                       <Mail className="w-6 h-6 text-[#D2962D]" />
                     </div>
                     <div>
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-low-color text-sm">
                         البريد الإلكتروني
                       </p>
                       <a
@@ -91,7 +91,7 @@ export function ContactSection({
                     <MapPin className="w-6 h-6 text-[#D2962D]" />
                   </div>
                   <div>
-                    <p className="text-muted-foreground text-sm">الموقع</p>
+                    <p className="text-low-color text-sm">الموقع</p>
                     <p className="text-foreground font-semibold text-lg">
                       {address}
                     </p>
@@ -103,7 +103,7 @@ export function ContactSection({
             <a
               href={`https://wa.me/${whatsapp.includes("+") ? whatsapp.split("+").join("") : whatsapp}?text=`}
               target="_blank"
-              className="flex items-center justify-center gap-3 text-white w-fit min-w-60 bg-[#25D366] text-cream rounded-xl p-4 font-semibold text-lg hover:bg-[#20BD5A] transition-colors shadow-lg">
+              className="flex items-center justify-center gap-3 text-white w-fit min-w-60 bg-green-700 text-cream rounded-xl p-4 font-semibold text-lg hover:bg-[#20BD5A] transition-colors shadow-lg">
               <MessageCircle className="w-6 h-6" />
               تواصل عبر واتساب
             </a>
