@@ -27,13 +27,13 @@ export function HeroSection({
       <div className="relative container mx-auto px-6 text-center">
         <div className="max-w-4xl mx-auto">
           {/* Headline */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-[hsl(var(--cream))] mb-6 leading-tight">
+          <h1 className="text-2xl md:text-6xl lg:text-7xl font-bold text-[hsl(var(--cream))] mb-6 leading-tight">
             {headline}
           </h1>
 
           {/* Subheadline */}
-          <p className="text-lg md:text-xl text-[hsl(var(--cream)/0.8)] mb-10 max-w-2xl mx-auto leading-relaxed">
-            {subheadline}{" "}
+          <p className="text-sm md:text-xl text-[hsl(var(--cream)/0.8)] mb-10 max-w-2xl mx-auto leading-relaxed">
+            {subheadline}
           </p>
 
           {/* CTA Buttons */}

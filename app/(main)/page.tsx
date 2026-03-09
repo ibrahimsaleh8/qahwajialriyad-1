@@ -1,10 +1,7 @@
 // app/page.tsx
 import { AboutSection } from "@/components/AboutSection";
 import { ContactSection } from "@/components/ContactSection";
-import FloatedIcons from "@/components/FloatedIcons";
-import { Footer } from "@/components/Footer";
 import { GallerySection } from "@/components/GallerySection";
-import { Header } from "@/components/Header";
 import { HeroSection } from "@/components/HeroSection";
 import PremiumPackagesSection from "@/components/PremiumPackagesSection";
 import RatingSection from "@/components/RatingSection";
@@ -44,8 +41,6 @@ export default async function HomePage() {
 
   return (
     <div>
-      <Header brandName={data.header.brandName} telephone={data.footer.phone} />
-
       {data.hero && <HeroSection {...data.hero} />}
       {data.about && <AboutSection {...data.about} />}
       {data.services && <ServicesSection {...data.services} />}
@@ -61,11 +56,6 @@ export default async function HomePage() {
       />
       <GallerySection images={data.gallery} />
       <ContactSection {...data.footer} whatsapp={data.hero?.whatsApp ?? ""} />
-      <FloatedIcons
-        whatsapp={data.hero?.whatsApp ?? ""}
-        telephone={data.footer.phone ?? ""}
-      />
-      <Footer {...data.footer} description={data.hero?.subheadline} />
     </div>
   );
 }

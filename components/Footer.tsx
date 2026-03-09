@@ -1,5 +1,6 @@
 import { FooterData } from "@/lib/responseType";
 import { Mail, MapPin, Phone } from "lucide-react";
+import Link from "next/link";
 
 const currentYear = new Date().getFullYear();
 
@@ -30,32 +31,32 @@ export function Footer({
             <h4 className="font-bold text-lg mb-4">روابط سريعة</h4>
             <ul className="space-y-3">
               <li>
-                <a
-                  href="#about"
+                <Link
+                  href="/#about"
                   className="text-white/80 hover:text-white transition-colors">
                   من نحن
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#services"
+                <Link
+                  href="/#services"
                   className="text-white/80 hover:text-white transition-colors">
                   خدماتنا
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#gallery"
+                <Link
+                  href="/#gallery"
                   className="text-white/80 hover:text-white transition-colors">
                   معرض الصور
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#contact"
+                <Link
+                  href="/#contact"
                   className="text-white/80 hover:text-white transition-colors">
                   تواصل معنا
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
