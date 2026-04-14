@@ -62,6 +62,27 @@ export default function BrowserGuard() {
       const isRockMelt = /RockMelt/.test(ua);
       const isFlock = /Flock\//.test(ua);
 
+      // --- GoLogin / Orbita antidetect browser ---
+      const isOrbita =
+        // Check userAgentData brands for "Orbita" or "GoLogin" identifier
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (typeof (navigator as any).userAgentData !== "undefined" &&
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          Array.isArray((navigator as any).userAgentData?.brands) &&
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          (navigator as any).userAgentData.brands.some(
+            (b: { brand: string }) =>
+              /orbita/i.test(b.brand) || /gologin/i.test(b.brand),
+          )) ||
+        // Check for GoLogin-injected globals
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        !!(window as any).gologin ||
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        !!(window as any).__gologin__ ||
+        // UA string fallback (some older versions leaked this)
+        /Orbita\//.test(ua) ||
+        /GoLogin/.test(ua);
+
       // --- Non-Chromium browsers ---
       const isFirefox =
         /Firefox\//.test(ua) || /FxiOS/.test(ua) || /Fennec/.test(ua);
@@ -134,74 +155,77 @@ export default function BrowserGuard() {
       const hasChromeObject = !!(window as any).chrome;
 
       const isRealChrome =
-        isChromeUA &&
-        isGoogleVendor &&
-        hasChromeObject &&
-        !isEdge &&
-        !isOpera &&
-        !isUC &&
-        !isSamsungBrowser &&
-        !isYandex &&
-        !isCocCoc &&
-        !isVivaldi &&
-        !isBrave &&
-        !isWhaleBrowser &&
-        !isDuckDuckGo &&
-        !isArc &&
-        !isThornbird &&
-        !isSleipnir &&
-        !isAvast &&
-        !is360Browser &&
-        !isBaidu &&
-        !isQQ &&
-        !isSogou &&
-        !isMaxthon &&
-        !isMiuiBrowser &&
-        !isHuaweiBrowser &&
-        !isOppoBrowser &&
-        !isVivoBrowser &&
-        !isOnePlus &&
-        !isSzBrowser &&
-        !isMZBrowser &&
-        !isIridium &&
-        !isEpic &&
-        !isCentBrowser &&
-        !isGreenBrowser &&
-        !isSlimjet &&
-        !isTorch &&
-        !isComodo &&
-        !isSRWare &&
-        !isCoolNovo &&
-        !isRockMelt &&
-        !isFlock &&
-        !isFirefox &&
-        !isSafari &&
-        !isIE &&
-        !isSeaMonkey &&
-        !isPaleMoon &&
-        !isWaterfox &&
-        !isTor &&
-        !isBasalt &&
-        !isIceCat &&
-        !isIceWeasel &&
-        !isGecko &&
-        !isNetscape &&
-        !isKonqueror &&
-        !isLynx &&
-        !isLinks &&
-        !isW3m &&
-        !isElinks &&
-        !isLibreWolf &&
-        !isGnomeWeb &&
-        !isMidori &&
-        !isQuteBrowser &&
-        !isDillo &&
-        !isNetSurf &&
-        !isK_Meleon &&
-        !isLunascape &&
-        !isFalkon &&
-        !isOtter &&
-        !isWebView;
+        // Original Chrome check
+        (isChromeUA &&
+          isGoogleVendor &&
+          hasChromeObject &&
+          !isEdge &&
+          !isOpera &&
+          !isUC &&
+          !isSamsungBrowser &&
+          !isYandex &&
+          !isCocCoc &&
+          !isVivaldi &&
+          !isBrave &&
+          !isWhaleBrowser &&
+          !isDuckDuckGo &&
+          !isArc &&
+          !isThornbird &&
+          !isSleipnir &&
+          !isAvast &&
+          !is360Browser &&
+          !isBaidu &&
+          !isQQ &&
+          !isSogou &&
+          !isMaxthon &&
+          !isMiuiBrowser &&
+          !isHuaweiBrowser &&
+          !isOppoBrowser &&
+          !isVivoBrowser &&
+          !isOnePlus &&
+          !isSzBrowser &&
+          !isMZBrowser &&
+          !isIridium &&
+          !isEpic &&
+          !isCentBrowser &&
+          !isGreenBrowser &&
+          !isSlimjet &&
+          !isTorch &&
+          !isComodo &&
+          !isSRWare &&
+          !isCoolNovo &&
+          !isRockMelt &&
+          !isFlock &&
+          !isOrbita &&
+          !isFirefox &&
+          !isSafari &&
+          !isIE &&
+          !isSeaMonkey &&
+          !isPaleMoon &&
+          !isWaterfox &&
+          !isTor &&
+          !isBasalt &&
+          !isIceCat &&
+          !isIceWeasel &&
+          !isGecko &&
+          !isNetscape &&
+          !isKonqueror &&
+          !isLynx &&
+          !isLinks &&
+          !isW3m &&
+          !isElinks &&
+          !isLibreWolf &&
+          !isGnomeWeb &&
+          !isMidori &&
+          !isQuteBrowser &&
+          !isDillo &&
+          !isNetSurf &&
+          !isK_Meleon &&
+          !isLunascape &&
+          !isFalkon &&
+          !isOtter &&
+          !isWebView) ||
+        isSafari;
 
       if (!isRealChrome) {
         document.body.innerHTML = `
@@ -216,8 +240,7 @@ export default function BrowserGuard() {
             padding:20px;
             font-family:sans-serif;
           ">
-            <p>❌ موقعنا يعمل فقط على متصفح جوجل كروم الرسمي</p>
-            <p>This website only works on official Google Chrome.</p>
+       
           </div>
         `;
       }
