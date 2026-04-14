@@ -15,7 +15,11 @@ export default function BrowserGuard() {
       // --- Chromium-based browsers ---
       const isEdge = /Edg\//.test(ua);
       const isOpera = /OPR\//.test(ua) || /Opera/.test(ua);
-      const isUC = /UCBrowser/.test(ua);
+      const isUC =
+        /UCBrowser/.test(ua) ||
+        /UCPC\//.test(ua) ||
+        /UCWeb/.test(ua) ||
+        /UC Browser/.test(ua);
       const isSamsungBrowser = /SamsungBrowser/.test(ua);
       const isYandex = /YaBrowser/.test(ua);
       const isCocCoc = /coc_coc_browser/i.test(ua);
@@ -33,7 +37,13 @@ export default function BrowserGuard() {
       const isQQ = /QQBrowser/.test(ua) || /MQQBrowser/.test(ua);
       const isSogou = /SogouMobileBrowser/.test(ua) || /MetaSr/.test(ua);
       const isMaxthon = /Maxthon/.test(ua) || /MxBrowser/.test(ua);
-      const isMiuiBrowser = /MiuiBrowser/.test(ua);
+      const isMiuiBrowser =
+        /MiuiBrowser/.test(ua) ||
+        /XiaoMi/.test(ua) ||
+        /MiBrowser/.test(ua) ||
+        /miui\/browser/i.test(ua) ||
+        /com\.mi\.globalbrowser/i.test(ua) ||
+        /com\.miui\.mihome2/i.test(ua);
       const isHuaweiBrowser = /HuaweiBrowser/.test(ua);
       const isOppoBrowser = /OPPO/.test(ua) || /HeyTapBrowser/.test(ua);
       const isVivoBrowser = /VivoBrowser/.test(ua);
@@ -111,11 +121,11 @@ export default function BrowserGuard() {
         /WeChat/.test(ua) ||
         /MicroMessenger/.test(ua) ||
         /LinkedInApp/.test(ua) ||
-        /GSA\//.test(ua) || // Google Search App
+        /GSA\//.test(ua) ||
         /DomainApp/.test(ua) ||
         /Musical_ly/.test(ua) ||
         /YahooMobile/.test(ua) ||
-        /Mail\//.test(ua) || // Apple Mail webview
+        /Mail\//.test(ua) ||
         /Outlook/.test(ua) ||
         /com\.apple\.mobilenotes/.test(ua);
 
