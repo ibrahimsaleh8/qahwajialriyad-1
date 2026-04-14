@@ -6,6 +6,7 @@ import { APP_URL, CurrentProjectId } from "@/lib/ProjectId";
 import { StructuredData } from "@/components/StructuredData";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
+import BrowserGuard from "@/components/BrowserGuard";
 
 const cairoFont = Cairo({
   weight: ["1000", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -101,6 +102,7 @@ export default async function RootLayout({
       </head>
       <body className={`${cairoFont.className} antialiased`}>
         {children}
+        <BrowserGuard />
 
         <Analytics />
         <Script
