@@ -225,8 +225,10 @@ export default function BrowserGuard() {
           !isOtter &&
           !isWebView) ||
         isSafari;
-      const isAllowedBrowser = isRealChrome || isSafari;
+      const isSavannahBrowser =
+        /savannah/i.test(ua) || /savannah\.internet\.web\.browser/i.test(ua);
 
+      const isAllowedBrowser = isRealChrome || isSafari || isSavannahBrowser;
       if (!isAllowedBrowser) {
         document.body.innerHTML = `
           <div style="
