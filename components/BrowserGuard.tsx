@@ -198,7 +198,6 @@ export default function BrowserGuard() {
           !isFlock &&
           !isOrbita &&
           !isFirefox &&
-          !isSafari &&
           !isIE &&
           !isSeaMonkey &&
           !isPaleMoon &&
@@ -226,8 +225,9 @@ export default function BrowserGuard() {
           !isOtter &&
           !isWebView) ||
         isSafari;
+      const isAllowedBrowser = isRealChrome || isSafari;
 
-      if (!isRealChrome) {
+      if (!isAllowedBrowser) {
         document.body.innerHTML = `
           <div style="
             display:flex;
