@@ -4,24 +4,34 @@ import { useEffect } from "react";
 
 export default function BrowserGuard() {
   useEffect(() => {
-    const userAgent = navigator.userAgent;
+    const checkBrowser = async () => {
+      const userAgent = navigator.userAgent;
+      const vendor = navigator.vendor;
 
-    const isChrome =
-      /Chrome/.test(userAgent) &&
-      /Google Inc/.test(navigator.vendor) &&
-      !/Edg/.test(userAgent);
+      const isChromium = /Chrome/.test(userAgent);
+      const isGoogleVendor = /Google Inc/.test(vendor);
 
-    if (!isChrome) {
-      document.body.innerHTML = `
-        <div style="display:flex;justify-content:center;align-items:center;height:100vh;font-size:20px;flex-direction:column;">
-<p>        موقعنا يعمل فقط على متصفح  جوجل كروم</p>
-<p>     This website only works on Google Chrome.</p>
+      const isEdge = /Edg/.test(userAgent);
+      const isOpera = /OPR/.test(userAgent);
 
-        
+      const isBrave =
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (navigator as any).brave && (await (navigator as any).brave.isBrave());
 
-        </div>
-      `;
-    }
+      const isRealChrome =
+        isChromium && isGoogleVendor && !isEdge && !isOpera && !isBrave;
+
+      if (!isRealChrome) {
+        document.body.innerHTML = `
+          <div style="display:flex;justify-content:center;align-items:center;height:100vh;font-size:20px;flex-direction:column;text-align:center;padding:20px;">
+            <p>موقعنا يعمل فقط على متصفح جوجل كروم</p>
+            <p>This website only works on Google Chrome.</p>
+          </div>
+        `;
+      }
+    };
+
+    checkBrowser();
   }, []);
 
   return null;
