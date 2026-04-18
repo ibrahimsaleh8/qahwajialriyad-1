@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
+import { geolocation } from "@vercel/functions";
 import type { NextRequest } from "next/server";
 
 export function proxy(request: NextRequest) {
-  const country = request.headers.get("x-vercel-ip-country") || "UNKNOWN";
+  const country = geolocation(request)?.country || "UNKNOWN";
   if (country !== "SA") {
     return NextResponse.redirect(new URL("/not-available", request.url));
   }
@@ -11,5 +12,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: "/:path*",
+  matcher: ["/((?!not-available|_next/static|_next/image|favicon.ico).*)"],
 };
