@@ -9,7 +9,7 @@ import { WhyUsSection } from "@/components/WhyUsSection";
 import { APP_URL, CurrentProjectId } from "@/lib/ProjectId";
 import { ProjectContentResponse } from "@/lib/responseType";
 
-export default async function NotSaudi() {
+export default async function OutsideSaudi() {
   let data;
 
   try {
