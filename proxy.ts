@@ -4,10 +4,8 @@ import type { NextRequest } from "next/server";
 
 export function proxy(request: NextRequest) {
   const country = geolocation(request)?.country || "UNKNOWN";
-  console.log("geolocation(request) is ", geolocation(request));
-  console.log("THe country is ", country);
   if (country !== "SA") {
-    return NextResponse.redirect(new URL("/not-available", request.url));
+    return NextResponse.redirect(new URL("/outside-saudi", request.url));
   }
 
   return NextResponse.next();
