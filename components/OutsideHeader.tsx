@@ -29,7 +29,7 @@ export function OutsideHeader({
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link
-            href="/#home"
+            href="/outside-saudi/#home"
             className="flex items-center gap-3 text-2xl font-bold">
             {brandName}
           </Link>
