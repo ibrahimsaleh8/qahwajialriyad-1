@@ -1,11 +1,13 @@
 // app/page.tsx
 import { AboutSection } from "@/components/AboutSection";
 import { ContactSection } from "@/components/ContactSection";
+import FloatedIcons from "@/components/FloatedIcons";
 import { GallerySection } from "@/components/GallerySection";
 import { HeroSection } from "@/components/HeroSection";
 import { OutsideFooter } from "@/components/OutsideFooter";
 import { OutsideHeader } from "@/components/OutsideHeader";
 import PremiumPackagesSection from "@/components/PremiumPackagesSection";
+import PreventCopy from "@/components/PreventCopy";
 import { ServicesSection } from "@/components/ServicesSection";
 import { WhyUsSection } from "@/components/WhyUsSection";
 import { APP_URL, CurrentProjectId } from "@/lib/ProjectId";
@@ -54,7 +56,11 @@ export default async function OutsideSaudi() {
         packages={data.packages ?? []}
         whatsapp={data.hero?.whatsApp ?? ""}
       />
-
+      <FloatedIcons
+        whatsapp={data.hero?.whatsApp ?? ""}
+        telephone={data.footer.phone ?? ""}
+      />
+      <PreventCopy />
       <GallerySection images={data.gallery} />
       <ContactSection {...data.footer} whatsapp={data.hero?.whatsApp ?? ""} />
       <OutsideFooter {...data.footer} description={data.hero?.subheadline} />
