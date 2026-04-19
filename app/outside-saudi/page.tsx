@@ -3,6 +3,8 @@ import { AboutSection } from "@/components/AboutSection";
 import { ContactSection } from "@/components/ContactSection";
 import { GallerySection } from "@/components/GallerySection";
 import { HeroSection } from "@/components/HeroSection";
+import { OutsideFooter } from "@/components/OutsideFooter";
+import { OutsideHeader } from "@/components/OutsideHeader";
 import PremiumPackagesSection from "@/components/PremiumPackagesSection";
 import { ServicesSection } from "@/components/ServicesSection";
 import { WhyUsSection } from "@/components/WhyUsSection";
@@ -39,7 +41,11 @@ export default async function OutsideSaudi() {
   }
 
   return (
-    <div>
+    <>
+      <OutsideHeader
+        brandName={data.header.brandName}
+        telephone={data.footer.phone}
+      />
       {data.hero && <HeroSection {...data.hero} />}
       {data.about && <AboutSection {...data.about} />}
       {data.services && <ServicesSection {...data.services} />}
@@ -51,6 +57,7 @@ export default async function OutsideSaudi() {
 
       <GallerySection images={data.gallery} />
       <ContactSection {...data.footer} whatsapp={data.hero?.whatsApp ?? ""} />
-    </div>
+      <OutsideFooter {...data.footer} description={data.hero?.subheadline} />
+    </>
   );
 }
