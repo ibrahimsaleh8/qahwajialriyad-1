@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export function GallerySection({ images }: { images: GalleryImageData[] }) {
   return (
-    <section id="gallery" className="py-24 bg-second-bg">
+    <section id="gallery" className="py-24 pt-5 bg-second-bg">
       <div className="container mx-auto px-4">
         {/* Gallery Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
