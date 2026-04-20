@@ -49,6 +49,8 @@ export default async function OutsideSaudi() {
         telephone={data.footer.phone}
       />
       {data.hero && <HeroSection {...data.hero} />}
+      <GallerySection images={data.gallery} />
+
       {data.about && <AboutSection {...data.about} />}
       {data.services && <ServicesSection {...data.services} />}
       {data.whyUs && <WhyUsSection {...data.whyUs} />}
@@ -61,7 +63,6 @@ export default async function OutsideSaudi() {
         telephone={data.footer.phone ?? ""}
       />
       <PreventCopy />
-      <GallerySection images={data.gallery} />
       <ContactSection {...data.footer} whatsapp={data.hero?.whatsApp ?? ""} />
       <OutsideFooter {...data.footer} description={data.hero?.subheadline} />
     </>
