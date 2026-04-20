@@ -50,7 +50,6 @@ export default async function OutsideSaudi() {
       />
       {data.hero && <HeroSection {...data.hero} />}
       <GallerySection images={data.gallery} />
-
       {data.about && <AboutSection {...data.about} />}
       {data.services && <ServicesSection {...data.services} />}
       {data.whyUs && <WhyUsSection {...data.whyUs} />}

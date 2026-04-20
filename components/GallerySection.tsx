@@ -5,20 +5,6 @@ export function GallerySection({ images }: { images: GalleryImageData[] }) {
   return (
     <section id="gallery" className="py-24 bg-second-bg">
       <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-main-color font-semibold text-sm tracking-wider mb-4 block">
-            معرض الصور
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-main-color mb-6">
-            لقطات من <span className="text-main-color">مناسباتنا</span>
-          </h2>
-          <div className="w-20 h-1 bg-main-color mx-auto mb-6" />
-          <p className="text-low-color text-lg">
-            نعتز بثقة عملائنا ونفخر بمشاركتكم لحظات من أعمالنا السابقة
-          </p>
-        </div>
-
         {/* Gallery Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {images.map((image, index) => (
