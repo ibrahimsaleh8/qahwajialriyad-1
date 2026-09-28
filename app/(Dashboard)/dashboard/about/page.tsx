@@ -22,7 +22,7 @@ export default async function AboutProject() {
     `${APP_URL}/api/dashboard/${CurrentProjectId}/get-about-project`,
     {
       cache: "no-store",
-    }
+    },
   );
   const data: GetAboutProjectResponse = await res.json();
 
