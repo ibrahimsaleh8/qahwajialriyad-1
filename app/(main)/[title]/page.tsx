@@ -1,10 +1,11 @@
-import { APP_URL, CurrentProjectId } from "@/lib/ProjectId";
+import { APP_URL, CurrentProjectId, currentURL } from "@/lib/ProjectId";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import ShareButtons from "./_components/ShareButtons";
 import { notFound } from "next/navigation";
 import { IoIosArrowBack } from "react-icons/io";
+import { fetchMetaData } from "@/lib/FetchMetaData";
 
 type Article = {
   id: string;
@@ -13,6 +14,7 @@ type Article = {
   createdAt: string;
   updatedAt: string;
   content: string | null;
+  keywords: string[];
 };
 
 type GetArticleResponse = {
@@ -60,14 +62,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const data = await res.json();
   const article = data.data.article;
-
-  const url = `${APP_URL}/articles/${(await params).title}`;
+  const metaData = await fetchMetaData();
+  const canonicalUrl = `${currentURL}/${article.title.split(" ").join("-")}`;
 
   return {
     title: article.title,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+
+    keywords: article.keywords?.length ? article.keywords : metaData.keywords,
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+
     openGraph: {
       title: article.title,
-      url,
+      url: canonicalUrl,
       type: "article",
       locale: "ar_SA",
       images: article.coverImage

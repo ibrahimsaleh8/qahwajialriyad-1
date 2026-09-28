@@ -14,7 +14,7 @@ export function Footer({
   return (
     <footer className="bg-[#563C29] text-white py-16">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
           {/* Brand */}
           <div>
             {brandName && (
@@ -51,34 +51,6 @@ export function Footer({
                   معرض الصور
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/#contact"
-                  className="text-white/80 hover:text-white transition-colors">
-                  تواصل معنا
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div className="flex-1">
-            <h4 className="font-bold text-lg mb-4">تواصل معنا</h4>
-            <ul className="space-y-3 text-white/80">
-              <li className="flex items-center gap-2">
-                <MapPin className="w-5 h-5" />
-                {address}
-              </li>
-              <li className="flex items-center gap-2">
-                <Phone className="w-5 h-5" />
-                {phone}
-              </li>
-              {email && (
-                <li className="flex items-center gap-2">
-                  <Mail className="w-5 h-5" />
-                  {email}
-                </li>
-              )}
             </ul>
           </div>
         </div>

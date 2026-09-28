@@ -144,6 +144,7 @@ export default function GalleryManager({
         return;
       }
 
+
       // Remove image from list
       setImages(images.filter((img) => img.id !== imageId));
 

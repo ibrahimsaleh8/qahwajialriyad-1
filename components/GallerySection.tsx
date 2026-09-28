@@ -1,32 +1,19 @@
 import { GalleryImageData } from "@/lib/responseType";
-import Image from "next/image";
+import GallaryImage from "./GallaryImage";
 
 export function GallerySection({ images }: { images: GalleryImageData[] }) {
   return (
-    <section id="gallery" className="py-24 pt-5 bg-second-bg">
+    <section id="gallery" className="py-24 pt-5 bg-second-bg overflow-x-hidden">
       <div className="container mx-auto px-4">
         {/* Gallery Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {images.map((image, index) => (
-            <div
+            <GallaryImage
               key={index}
-              className={`relative bg-white/60 overflow-hidden rounded-2xl cursor-pointer group shadow-soft hover:shadow-luxury transition-all duration-300`}>
-              <div className={`aspect-square `}>
-                <Image
-                  src={image.url}
-                  alt={image.alt ?? `صورة-${index + 1}`}
-                  width={1000}
-                  height={1000}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 rounded-2xl"
-                />
-              </div>
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-[hsl(var(--coffee-dark)/0)] group-hover:bg-[hsl(var(--coffee-dark)/0.4)] transition-colors duration-300 flex items-center justify-center rounded-2xl">
-                <span className="text-[hsl(var(--cream))] opacity-0 group-hover:opacity-100 transition-opacity duration-300 font-semibold text-center px-2">
-                  {image.alt ?? `صورة-${index + 1}`}
-                </span>
-              </div>
-            </div>
+              index={index}
+              alt={image.alt}
+              url={image.url}
+            />
           ))}
         </div>
       </div>

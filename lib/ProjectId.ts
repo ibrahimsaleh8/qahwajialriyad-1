@@ -1,5 +1,7 @@
-// export const CurrentProjectId = "cml0y83vs001s04l8x4tqyje7";
-export const APP_URL = "https://qahwajige-backend-ppqtou.cranl.net";
-export const CurrentProjectId = "cmlryfrnp00091un2df6tb5be";
+// export const CurrentProjectId = "cmrf4x7u50000i4t3yrny876w";
+// export const APP_URL = "http://localhost:5000";
 
-export const currentURL = "https://www.qahwajige.com";
+export const APP_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+export const CurrentProjectId = process.env.NEXT_PUBLIC_PROJECT_ID;
+
+export const currentURL = process.env.NEXT_PUBLIC_CURRENT_URL;

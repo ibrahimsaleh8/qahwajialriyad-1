@@ -42,11 +42,9 @@ export default function LoginForm() {
         }; sameSite=Lax`;
       }
 
-      console.log("Login DATA", data);
       // Redirect to admin dashboard
       router.push("/dashboard");
     } catch (err) {
-      console.log("Error", err);
       setError("Something went wrong. Please try again.");
     } finally {
       setLoading(false);

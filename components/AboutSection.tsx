@@ -10,7 +10,7 @@ export function AboutSection({
   return (
     <section id="about" className="py-24">
       <div className="container mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Image */}
           <div className="relative order-2 lg:order-1">
             {image && (
